@@ -155,6 +155,41 @@ const Panel: FC<NodePanelProps<StartNodeType>> = ({
                   </div>
                 }
               />
+
+              <VarItem
+                readonly
+                payload={{
+                  variable: 'sys.org_class',
+                } as any}
+                rightContent={
+                  <div className='text-xs font-normal text-gray-500'>
+                    String
+                  </div>
+                }
+              />
+              <VarItem
+                readonly
+                payload={{
+                  variable: 'sys.scopes',
+                } as any}
+                rightContent={
+                  <div className='text-xs font-normal text-gray-500'>
+                    String
+                  </div>
+                }
+              />
+              <VarItem
+                readonly
+                payload={{
+                  variable: 'sys.client_id',
+                } as any}
+                rightContent={
+                  <div className='text-xs font-normal text-gray-500'>
+                    String
+                  </div>
+                }
+              />
+
             </div>
 
           </>

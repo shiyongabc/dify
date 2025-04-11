@@ -198,6 +198,18 @@ const formatItem = (
         variable: 'sys.workflow_run_id',
         type: VarType.string,
       })
+      res.vars.push({
+        variable: 'sys.org_class',
+        type: VarType.string,
+      })
+      res.vars.push({
+        variable: 'sys.scopes',
+        type: VarType.string,
+      })
+      res.vars.push({
+        variable: 'sys.client_id',
+        type: VarType.string,
+      })
 
       break
     }
