@@ -1,5 +1,6 @@
 import logging
 
+import click
 from flask_restful import reqparse  # type: ignore
 from werkzeug.exceptions import InternalServerError, NotFound
 
@@ -30,7 +31,6 @@ from libs.helper import uuid_value
 from models.model import AppMode
 from services.app_generate_service import AppGenerateService
 from services.errors.llm import InvokeRateLimitError
-import click
 
 
 # define completion api for user

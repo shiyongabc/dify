@@ -1,5 +1,6 @@
 import logging
 
+import click
 from flask_restful import Resource, reqparse  # type: ignore
 from werkzeug.exceptions import InternalServerError, NotFound
 
@@ -29,7 +30,7 @@ from libs.helper import uuid_value
 from models.model import App, AppMode, EndUser
 from services.app_generate_service import AppGenerateService
 from services.errors.llm import InvokeRateLimitError
-import click
+
 
 class CompletionApi(Resource):
     @validate_app_token(fetch_user_arg=FetchUserArg(fetch_from=WhereisUserArg.JSON, required=True))
