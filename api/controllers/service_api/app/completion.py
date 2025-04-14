@@ -2,7 +2,7 @@ import logging
 
 from flask_restful import Resource, reqparse  # type: ignore
 from werkzeug.exceptions import InternalServerError, NotFound
-
+from libs import helper
 import services
 from controllers.service_api import api
 from controllers.service_api.app.error import (
@@ -38,6 +38,7 @@ class CompletionApi(Resource):
             raise AppUnavailableError()
 
         parser = reqparse.RequestParser()
+        parser.add_argument("Cookie", type=str, location="headers")
         parser.add_argument("inputs", type=dict, required=True, location="json")
         parser.add_argument("query", type=str, location="json", default="")
         parser.add_argument("files", type=list, required=False, location="json")
@@ -45,7 +46,13 @@ class CompletionApi(Resource):
         parser.add_argument("retriever_from", type=str, required=False, default="dev", location="json")
 
         args = parser.parse_args()
-
+        #获取cookie 如果有值 则取出cookie的Authorization值 并jwt解析  获取 org_class scope client_id user_id用于权限处理
+        cookie_header = args.get("Cookie", "")
+        input_json = args["inputs"]
+        logging.info("inputJson=",input_json)
+        input_json=helper.obtain_init_sys_params_from_cookie(cookie_header,input_json)
+        logging.info("inputJsonFinal=",input_json)
+        args["inputs"]=input_json
         streaming = args["response_mode"] == "streaming"
 
         args["auto_generate_name"] = False
@@ -101,6 +108,7 @@ class ChatApi(Resource):
             raise NotChatAppError()
 
         parser = reqparse.RequestParser()
+        parser.add_argument("Cookie", type=str, location="headers")
         parser.add_argument("inputs", type=dict, required=True, location="json")
         parser.add_argument("query", type=str, required=True, location="json")
         parser.add_argument("files", type=list, required=False, location="json")
@@ -110,7 +118,13 @@ class ChatApi(Resource):
         parser.add_argument("auto_generate_name", type=bool, required=False, default=True, location="json")
 
         args = parser.parse_args()
-
+        #获取cookie 如果有值 则取出cookie的Authorization值 并jwt解析  获取 org_class scope client_id user_id用于权限处理
+        cookie_header = args.get("Cookie", "")
+        input_json = args["inputs"]
+        logging.info("inputJson=",input_json)
+        input_json=helper.obtain_init_sys_params_from_cookie(cookie_header,input_json)
+        logging.info("inputJsonFinal=",input_json)
+        args["inputs"]=input_json
         streaming = args["response_mode"] == "streaming"
 
         try:
