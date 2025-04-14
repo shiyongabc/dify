@@ -29,7 +29,7 @@ from libs.helper import uuid_value
 from models.model import App, AppMode, EndUser
 from services.app_generate_service import AppGenerateService
 from services.errors.llm import InvokeRateLimitError
-
+import click
 
 class CompletionApi(Resource):
     @validate_app_token(fetch_user_arg=FetchUserArg(fetch_from=WhereisUserArg.JSON, required=True))
@@ -49,9 +49,9 @@ class CompletionApi(Resource):
         #获取cookie 如果有值 则取出cookie的Authorization值 并jwt解析  获取 org_class scope client_id user_id用于权限处理
         cookie_header = args.get("Cookie", "")
         input_json = args["inputs"]
-        logging.info("inputJson=",input_json)
+        logging.info(click.style("inputJson: {}".format(input_json), fg="green"))
         input_json=helper.obtain_init_sys_params_from_cookie(cookie_header,input_json)
-        logging.info("inputJsonFinal=",input_json)
+        logging.info(click.style("inputJsonFinal: {}".format(input_json), fg="green"))
         args["inputs"]=input_json
         streaming = args["response_mode"] == "streaming"
 
@@ -121,9 +121,9 @@ class ChatApi(Resource):
         #获取cookie 如果有值 则取出cookie的Authorization值 并jwt解析  获取 org_class scope client_id user_id用于权限处理
         cookie_header = args.get("Cookie", "")
         input_json = args["inputs"]
-        logging.info("inputJson=",input_json)
+        logging.info(click.style("inputJson: {}".format(input_json), fg="green"))
         input_json=helper.obtain_init_sys_params_from_cookie(cookie_header,input_json)
-        logging.info("inputJsonFinal=",input_json)
+        logging.info(click.style("inputJsonFinal: {}".format(input_json), fg="green"))
         args["inputs"]=input_json
         streaming = args["response_mode"] == "streaming"
 

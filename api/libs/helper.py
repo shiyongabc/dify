@@ -20,7 +20,7 @@ from configs import dify_config
 from core.app.features.rate_limiting.rate_limit import RateLimitGenerator
 from core.file import helpers as file_helpers
 from extensions.ext_redis import redis_client
-
+import click
 if TYPE_CHECKING:
     from models.account import Account
 
@@ -321,11 +321,11 @@ def swap_json_from_jwt(jwt_str):
 
     header_json = decode_base64url(header_encoded).decode("utf-8")
     header = json.loads(header_json)
-    logging.info("Header:", header)
+    logging.info(click.style("Header: {}".format(header), fg="green"))
     # 解码载荷
     payload_json = decode_base64url(payload_encoded).decode("utf-8")
     payload = json.loads(payload_json)
-    logging.info("authorizatioJson:",payload)
+    logging.info(click.style("authorizatioJson: {}".format(payload), fg="green"))
     return payload
 def obtain_init_sys_params_from_cookie(cookie_header,input_json):
     if cookie_header:
@@ -340,8 +340,8 @@ def obtain_init_sys_params_from_cookie(cookie_header,input_json):
                     #判断有效期是否到期 取字段：exp:1746762125
                     exp=authorization_json["exp"]
                     timestamp = int(time.time())
-                    logging.info("exp=",exp)
-                    logging.info(",currenttime=" , timestamp)
+                    logging.info(click.style("exp: {}".format(exp), fg="green"))
+                    logging.info(click.style("currenttime: {}".format(timestamp), fg="green"))
                     if timestamp<=exp:
                         #print("authorizationJson-org_class=%s"%authorizationJson["clientOrgClass"])
                         input_json["sys.org_class"] = authorization_json["clientOrgClass"]
