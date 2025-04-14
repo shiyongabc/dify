@@ -1,3 +1,5 @@
+import logging
+import click
 from core.workflow.constants import SYSTEM_VARIABLE_NODE_ID
 from core.workflow.entities.node_entities import NodeRunResult
 from core.workflow.nodes.base import BaseNode
@@ -16,7 +18,10 @@ class StartNode(BaseNode[StartNodeData]):
 
         # TODO: System variables should be directly accessible, no need for special handling
         # Set system variables as node outputs.
+        logging.info(click.style("node_inputs: {}".format(node_inputs), fg="green"))
+        logging.info(click.style("system_inputs: {}".format(system_inputs), fg="green"))
         for var in system_inputs:
             node_inputs[SYSTEM_VARIABLE_NODE_ID + "." + var] = system_inputs[var]
 
+        logging.info(click.style("node_inputs: {}".format(node_inputs), fg="green"))
         return NodeRunResult(status=WorkflowNodeExecutionStatus.SUCCEEDED, inputs=node_inputs, outputs=node_inputs)

@@ -12,7 +12,8 @@ from factories import variable_factory
 
 from ..constants import CONVERSATION_VARIABLE_NODE_ID, ENVIRONMENT_VARIABLE_NODE_ID, SYSTEM_VARIABLE_NODE_ID
 from ..enums import SystemVariableKey
-
+import logging
+import click
 VariableValue = Union[str, int, float, dict, list, File]
 
 VARIABLE_PATTERN = re.compile(r"\{\{#([a-zA-Z0-9_]{1,50}(?:\.[a-zA-Z_][a-zA-Z0-9_]{0,29}){1,10})#\}\}")
@@ -64,8 +65,10 @@ class VariablePool(BaseModel):
             conversation_variables=conversation_variables,
             **kwargs,
         )
-
+        logging.info(click.style("user_variables: {}".format(self.user_inputs), fg="green"))
+        logging.info(click.style("system_variables: {}".format(self.system_variables.items()), fg="green"))
         for key, value in self.system_variables.items():
+            
             self.add((SYSTEM_VARIABLE_NODE_ID, key.value), value)
         # Add environment variables to the variable pool
         for var in self.environment_variables:
