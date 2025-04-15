@@ -25,28 +25,30 @@ class BaseAppGenerator:
         #向Sequence加元素variables org_class scopes client_id
 
         org_class=VariableEntity()
-
         org_class.variable="sys.org_class"
         org_class.label = "sys.org_class"
         org_class.max_length = "48"
-        org_class.required = False
+        org_class.required = "False"
         org_class.type=VariableEntityType(VariableEntityType.TEXT_INPUT)
+        logging.info(click.style("org_class: {}".format(org_class), fg="green"))
+
         variables.__new__(org_class)
+        logging.info(click.style("variables_add_default: {}".format(variables), fg="green"))
         scopes=VariableEntity()
         scopes.variable="sys.scopes"
         scopes.label = "sys.scopes"
         scopes.max_length = "48"
-        scopes.required= False
+        scopes.required= "False"
         scopes.type = VariableEntityType(VariableEntityType.TEXT_INPUT)
         variables.__new__(scopes)
         client_id=VariableEntity()
         client_id.variable="sys.client_id"
         client_id.label = "sys.client_id"
         client_id,max_length = "48"
-        client_id.required = False
+        client_id.required = "False"
         client_id.type = VariableEntityType(VariableEntityType.TEXT_INPUT)
         variables.__new__(client_id)
-        logging.info(click.style("variables_add_default: {}".format(variables), fg="green"))
+
         user_inputs = {
             var.variable: self._validate_inputs(value=user_inputs.get(var.variable), variable_entity=var)
             for var in variables
@@ -105,6 +107,7 @@ class BaseAppGenerator:
         variable_entity: "VariableEntity",
         value: Any,
     ):
+        logging.info(click.style("variable_entity: {}".format(variable_entity), fg="green"))
         if value is None:
             if variable_entity.required:
                 raise ValueError(f"{variable_entity.variable} is required in input form")
