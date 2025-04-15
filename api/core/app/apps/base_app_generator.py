@@ -9,8 +9,8 @@ from core.app.app_config.entities import VariableEntityType
 from core.file import File, FileUploadConfig
 from factories import file_factory
 
-if TYPE_CHECKING:
-    from core.app.app_config.entities import VariableEntity
+#
+from core.app.app_config.entities import VariableEntity
 
 
 class BaseAppGenerator:
