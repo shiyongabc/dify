@@ -25,9 +25,21 @@ class BaseAppGenerator:
         # Filter input variables from form configuration, handle required fields, default values, and option values
         logging.info(click.style("variables: {}".format(variables), fg="green"))
         #向Sequence加元素variables org_class scopes client_id
-        variables.__setattr__("sys.org_class","sys.org_class")
-        variables.__setattr__("sys.scopes", "sys.scopes")
-        variables.__setattr__("sys.client_id", "sys.client_id")
+        org_class={}
+        org_class["variable"]="sys.org_class"
+        org_class["label"] = "sys.org_class"
+        org_class["max_length"] = "48"
+        variables.__new__(org_class)
+        scopes={}
+        scopes["variable"]="sys.scopes"
+        scopes["label"] = "sys.scopes"
+        scopes["max_length"] = "48"
+        variables.__new__(scopes)
+        client_id={}
+        client_id["variable"]="sys.client_id"
+        client_id["label"] = "sys.client_id"
+        client_id["max_length"] = "48"
+        variables.__new__(client_id)
         logging.info(click.style("variables_add_default: {}".format(variables), fg="green"))
         user_inputs = {
             var.variable: self._validate_inputs(value=user_inputs.get(var.variable), variable_entity=var)
