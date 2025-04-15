@@ -1,8 +1,10 @@
+import logging
 import re
 from collections import defaultdict
 from collections.abc import Mapping, Sequence
 from typing import Any, Union
 
+import click
 from pydantic import BaseModel, Field
 
 from core.file import File, FileAttribute, file_manager
@@ -12,8 +14,7 @@ from factories import variable_factory
 
 from ..constants import CONVERSATION_VARIABLE_NODE_ID, ENVIRONMENT_VARIABLE_NODE_ID, SYSTEM_VARIABLE_NODE_ID
 from ..enums import SystemVariableKey
-import logging
-import click
+
 VariableValue = Union[str, int, float, dict, list, File]
 
 VARIABLE_PATTERN = re.compile(r"\{\{#([a-zA-Z0-9_]{1,50}(?:\.[a-zA-Z_][a-zA-Z0-9_]{0,29}){1,10})#\}\}")

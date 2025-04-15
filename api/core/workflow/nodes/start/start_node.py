@@ -1,5 +1,7 @@
 import logging
+
 import click
+
 from core.workflow.constants import SYSTEM_VARIABLE_NODE_ID
 from core.workflow.entities.node_entities import NodeRunResult
 from core.workflow.nodes.base import BaseNode

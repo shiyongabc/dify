@@ -345,6 +345,7 @@ def obtain_init_sys_params_from_cookie(cookie_header,input_json):
                     logging.info(click.style("currenttime: {}".format(timestamp), fg="green"))
                     if timestamp<=exp:
                         #print("authorizationJson-org_class=%s"%authorizationJson["clientOrgClass"])
+                        # 需要开始节点设置这几个变量 否则变量校验的时候 不通过
                         input_json["sys.org_class"] = authorization_json["clientOrgClass"]
                         input_json["sys.user_id"] = authorization_json["userId"]
                         input_json["sys.client_id"] = authorization_json["client_id"]

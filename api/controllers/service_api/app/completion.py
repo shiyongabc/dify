@@ -57,7 +57,7 @@ class CompletionApi(Resource):
         streaming = args["response_mode"] == "streaming"
 
         args["auto_generate_name"] = False
-
+        logging.info(click.style("args: {}".format(args), fg="green"))
         try:
             response = AppGenerateService.generate(
                 app_model=app_model,
@@ -127,7 +127,7 @@ class ChatApi(Resource):
         logging.info(click.style("inputJsonFinal: {}".format(input_json), fg="green"))
         args["inputs"]=input_json
         streaming = args["response_mode"] == "streaming"
-
+        logging.info(click.style("args: {}".format(args), fg="green"))
         try:
             response = AppGenerateService.generate(
                 app_model=app_model, user=end_user, args=args, invoke_from=InvokeFrom.SERVICE_API, streaming=streaming

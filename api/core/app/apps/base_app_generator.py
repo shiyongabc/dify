@@ -5,7 +5,9 @@ from typing import TYPE_CHECKING, Any, Optional, Union
 from core.app.app_config.entities import VariableEntityType
 from core.file import File, FileUploadConfig
 from factories import file_factory
+import logging
 
+import click
 if TYPE_CHECKING:
     from core.app.app_config.entities import VariableEntity
 
@@ -20,10 +22,17 @@ class BaseAppGenerator:
     ) -> Mapping[str, Any]:
         user_inputs = user_inputs or {}
         # Filter input variables from form configuration, handle required fields, default values, and option values
+        logging.info(click.style("variables: {}".format(variables), fg="green"))
+        #向Sequence加元素variables org_class scopes client_id
+        variables.__setattr__("sys.org_class","sys.org_class")
+        variables.__setattr__("sys.scopes", "sys.scopes")
+        variables.__setattr__("sys.client_id", "sys.client_id")
+        logging.info(click.style("variables_add_default: {}".format(variables), fg="green"))
         user_inputs = {
             var.variable: self._validate_inputs(value=user_inputs.get(var.variable), variable_entity=var)
             for var in variables
         }
+        logging.info(click.style("user_inputs_prepare: {}".format(user_inputs), fg="green"))
         user_inputs = {k: self._sanitize_value(v) for k, v in user_inputs.items()}
         # Convert files in inputs to File
         entity_dictionary = {item.variable: item for item in variables}
