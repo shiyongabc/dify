@@ -1,16 +1,14 @@
 import json
 import logging
 from collections.abc import Generator, Mapping, Sequence
-from typing import TYPE_CHECKING, Any, Optional, Union
+from typing import Any, Optional, Union
 
 import click
 
-from core.app.app_config.entities import VariableEntityType
+#
+from core.app.app_config.entities import VariableEntity, VariableEntityType
 from core.file import File, FileUploadConfig
 from factories import file_factory
-
-#
-from core.app.app_config.entities import VariableEntity
 
 
 class BaseAppGenerator:
