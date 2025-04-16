@@ -67,9 +67,9 @@ class BasicVariablesConfigManager:
         variable_entities.append(
             VariableEntity(
                 type=VariableEntityType.TEXT_INPUT,
-                variable="org_class",
+                variable="sys.org_class",
                 description="",
-                label="org_class",
+                label="sys.org_class",
                 required=False,
                 max_length=48,
                 options=[],
@@ -78,9 +78,9 @@ class BasicVariablesConfigManager:
         variable_entities.append(
             VariableEntity(
                 type=VariableEntityType.TEXT_INPUT,
-                variable="client_id",
+                variable="sys.client_id",
                 description="",
-                label="client_id",
+                label="sys.client_id",
                 required=False,
                 max_length=60,
                 options=[],
@@ -89,9 +89,9 @@ class BasicVariablesConfigManager:
         variable_entities.append(
             VariableEntity(
                 type=VariableEntityType.TEXT_INPUT,
-                variable="scopes",
+                variable="sys.scopes",
                 description="",
-                label="scopes",
+                label="sys.scopes",
                 required=False,
                 max_length=256,
                 options=[],
@@ -100,9 +100,9 @@ class BasicVariablesConfigManager:
         variable_entities.append(
             VariableEntity(
                 type=VariableEntityType.TEXT_INPUT,
-                variable="user_id",
+                variable="sys.user_id",
                 description="",
-                label="user_id",
+                label="sys.user_id",
                 required=False,
                 max_length=60,
                 options=[],

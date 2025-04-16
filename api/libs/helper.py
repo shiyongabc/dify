@@ -346,10 +346,10 @@ def obtain_init_sys_params_from_cookie(cookie_header,input_json):
                     if timestamp<=exp:
                         #print("authorizationJson-org_class=%s"%authorizationJson["clientOrgClass"])
                         # 需要开始节点设置这几个变量 否则变量校验的时候 不通过
-                        input_json["org_class"] = authorization_json["clientOrgClass"]
-                        input_json["user_id"] = authorization_json["userId"]
-                        input_json["client_id"] = authorization_json["client_id"]
+                        input_json["sys.org_class"] = authorization_json["clientOrgClass"]
+                        input_json["sys.user_id"] = authorization_json["userId"]
+                        input_json["sys.client_id"] = authorization_json["client_id"]
                         #scopes转化为字符串用|隔开
-                        input_json["scopes"] = "|".join(authorization_json["scope"])+"|"
+                        input_json["sys.scopes"] = "|".join(authorization_json["scope"])+"|"
 
     return input_json

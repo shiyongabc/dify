@@ -1,8 +1,11 @@
-from core.app.app_config.entities import VariableEntity
-from models.workflow import Workflow
-from core.app.app_config.entities import  VariableEntity, VariableEntityType
 import logging
+
 import click
+
+from core.app.app_config.entities import VariableEntity, VariableEntityType
+from models.workflow import Workflow
+
+
 class WorkflowVariablesConfigManager:
     @classmethod
     def convert(cls, workflow: Workflow) -> list[VariableEntity]:
@@ -23,9 +26,9 @@ class WorkflowVariablesConfigManager:
         variables.append(
             VariableEntity(
                 type=VariableEntityType.TEXT_INPUT,
-                variable="org_class",
+                variable="sys.org_class",
                 description="",
-                label="org_class",
+                label="sys.org_class",
                 required=False,
                 max_length=48,
                 options=[],
@@ -34,9 +37,9 @@ class WorkflowVariablesConfigManager:
         variables.append(
             VariableEntity(
                 type=VariableEntityType.TEXT_INPUT,
-                variable="client_id",
+                variable="sys.client_id",
                 description="",
-                label="client_id",
+                label="sys.client_id",
                 required=False,
                 max_length=60,
                 options=[],
@@ -45,9 +48,9 @@ class WorkflowVariablesConfigManager:
         variables.append(
             VariableEntity(
                 type=VariableEntityType.TEXT_INPUT,
-                variable="scopes",
+                variable="sys.scopes",
                 description="",
-                label="scopes",
+                label="sys.scopes",
                 required=False,
                 max_length=256,
                 options=[],
@@ -56,9 +59,9 @@ class WorkflowVariablesConfigManager:
         variables.append(
             VariableEntity(
                 type=VariableEntityType.TEXT_INPUT,
-                variable="user_id",
+                variable="sys.user_id",
                 description="",
-                label="user_id",
+                label="sys.user_id",
                 required=False,
                 max_length=60,
                 options=[],
