@@ -1,8 +1,9 @@
+import logging
 import re
 
 from core.app.app_config.entities import ExternalDataVariableEntity, VariableEntity, VariableEntityType
 from core.external_data_tool.factory import ExternalDataToolFactory
-
+import click
 
 class BasicVariablesConfigManager:
     @classmethod
@@ -60,51 +61,52 @@ class BasicVariablesConfigManager:
                         options=variable.get("options") or [],
                     )
                 )
-            #添加默认参数
-            variable_entities.append(
-                VariableEntity(
-                    type=VariableEntityType.TEXT_INPUT,
-                    variable="org_class",
-                    description="",
-                    label="org_class",
-                    required=False,
-                    max_length=48,
-                    options=[],
-                )
+        #添加默认参数
+        variable_entities.append(
+            VariableEntity(
+                type=VariableEntityType.TEXT_INPUT,
+                variable="org_class",
+                description="",
+                label="org_class",
+                required=False,
+                max_length=48,
+                options=[],
             )
-            variable_entities.append(
-                VariableEntity(
-                    type=VariableEntityType.TEXT_INPUT,
-                    variable="client_id",
-                    description="",
-                    label="client_id",
-                    required=False,
-                    max_length=60,
-                    options=[],
-                )
+        )
+        variable_entities.append(
+            VariableEntity(
+                type=VariableEntityType.TEXT_INPUT,
+                variable="client_id",
+                description="",
+                label="client_id",
+                required=False,
+                max_length=60,
+                options=[],
             )
-            variable_entities.append(
-                VariableEntity(
-                    type=VariableEntityType.TEXT_INPUT,
-                    variable="scopes",
-                    description="",
-                    label="scopes",
-                    required=False,
-                    max_length=256,
-                    options=[],
-                )
+        )
+        variable_entities.append(
+            VariableEntity(
+                type=VariableEntityType.TEXT_INPUT,
+                variable="scopes",
+                description="",
+                label="scopes",
+                required=False,
+                max_length=256,
+                options=[],
             )
-            variable_entities.append(
-                VariableEntity(
-                    type=VariableEntityType.TEXT_INPUT,
-                    variable="user_id",
-                    description="",
-                    label="user_id",
-                    required=False,
-                    max_length=60,
-                    options=[],
-                )
+        )
+        variable_entities.append(
+            VariableEntity(
+                type=VariableEntityType.TEXT_INPUT,
+                variable="user_id",
+                description="",
+                label="user_id",
+                required=False,
+                max_length=60,
+                options=[],
             )
+        )
+        logging.info(click.style("variable_entities: {}".format(variable_entities), fg="green"))
         return variable_entities, external_data_variables
 
     @classmethod
