@@ -60,7 +60,51 @@ class BasicVariablesConfigManager:
                         options=variable.get("options") or [],
                     )
                 )
-
+            #添加默认参数
+            variable_entities.append(
+                VariableEntity(
+                    type=VariableEntityType.TEXT_INPUT,
+                    variable="org_class",
+                    description="",
+                    label="org_class",
+                    required=False,
+                    max_length=48,
+                    options=[],
+                )
+            )
+            variable_entities.append(
+                VariableEntity(
+                    type=VariableEntityType.TEXT_INPUT,
+                    variable="client_id",
+                    description="",
+                    label="client_id",
+                    required=False,
+                    max_length=60,
+                    options=[],
+                )
+            )
+            variable_entities.append(
+                VariableEntity(
+                    type=VariableEntityType.TEXT_INPUT,
+                    variable="scopes",
+                    description="",
+                    label="scopes",
+                    required=False,
+                    max_length=256,
+                    options=[],
+                )
+            )
+            variable_entities.append(
+                VariableEntity(
+                    type=VariableEntityType.TEXT_INPUT,
+                    variable="user_id",
+                    description="",
+                    label="user_id",
+                    required=False,
+                    max_length=60,
+                    options=[],
+                )
+            )
         return variable_entities, external_data_variables
 
     @classmethod

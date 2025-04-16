@@ -25,16 +25,16 @@ class BaseAppGenerator:
         #向Sequence加元素variables org_class scopes client_id
 
         #sys.scopes sys.client_id sys.org_class 不做校验
-        scopes=user_inputs["sys.scopes"]
-        client_id = user_inputs["sys.client_id"]
-        org_class = user_inputs["sys.org_class"]
+        # scopes=user_inputs["sys.scopes"]
+        # client_id = user_inputs["sys.client_id"]
+        # org_class = user_inputs["sys.org_class"]
         user_inputs = {
             var.variable: self._validate_inputs(value=user_inputs.get(var.variable), variable_entity=var)
             for var in variables
         }
-        user_inputs["sys.scopes"]=scopes
-        user_inputs["sys.client_id"] = client_id
-        user_inputs["sys.org_class"] = org_class
+        # user_inputs["sys.scopes"]=scopes
+        # user_inputs["sys.client_id"] = client_id
+        # user_inputs["sys.org_class"] = org_class
         logging.info(click.style("user_inputs_prepare: {}".format(user_inputs), fg="green"))
         user_inputs = {k: self._sanitize_value(v) for k, v in user_inputs.items()}
         # Convert files in inputs to File
