@@ -1,8 +1,6 @@
-import logging
 
-import click
 
-from core.app.app_config.entities import VariableEntity, VariableEntityType
+from core.app.app_config.entities import VariableEntity
 from models.workflow import Workflow
 
 
