@@ -63,52 +63,52 @@ class BasicVariablesConfigManager:
                         options=variable.get("options") or [],
                     )
                 )
-        #添加默认参数
-        variable_entities.append(
-            VariableEntity(
-                type=VariableEntityType.TEXT_INPUT,
-                variable="sys.org_class",
-                description="",
-                label="sys.org_class",
-                required=False,
-                max_length=48,
-                options=[],
-            )
-        )
-        variable_entities.append(
-            VariableEntity(
-                type=VariableEntityType.TEXT_INPUT,
-                variable="sys.client_id",
-                description="",
-                label="sys.client_id",
-                required=False,
-                max_length=60,
-                options=[],
-            )
-        )
-        variable_entities.append(
-            VariableEntity(
-                type=VariableEntityType.TEXT_INPUT,
-                variable="sys.scopes",
-                description="",
-                label="sys.scopes",
-                required=False,
-                max_length=256,
-                options=[],
-            )
-        )
-        variable_entities.append(
-            VariableEntity(
-                type=VariableEntityType.TEXT_INPUT,
-                variable="sys.user_id",
-                description="",
-                label="sys.user_id",
-                required=False,
-                max_length=60,
-                options=[],
-            )
-        )
-        logging.info(click.style("variable_entities: {}".format(variable_entities), fg="green"))
+        # #添加默认参数
+        # variable_entities.append(
+        #     VariableEntity(
+        #         type=VariableEntityType.TEXT_INPUT,
+        #         variable="org_class",
+        #         description="",
+        #         label="org_class",
+        #         required=False,
+        #         max_length=48,
+        #         options=[],
+        #     )
+        # )
+        # variable_entities.append(
+        #     VariableEntity(
+        #         type=VariableEntityType.TEXT_INPUT,
+        #         variable="sys.client_id",
+        #         description="",
+        #         label="sys.client_id",
+        #         required=False,
+        #         max_length=60,
+        #         options=[],
+        #     )
+        # )
+        # variable_entities.append(
+        #     VariableEntity(
+        #         type=VariableEntityType.TEXT_INPUT,
+        #         variable="sys.scopes",
+        #         description="",
+        #         label="sys.scopes",
+        #         required=False,
+        #         max_length=256,
+        #         options=[],
+        #     )
+        # )
+        # variable_entities.append(
+        #     VariableEntity(
+        #         type=VariableEntityType.TEXT_INPUT,
+        #         variable="sys.user_id",
+        #         description="",
+        #         label="sys.user_id",
+        #         required=False,
+        #         max_length=60,
+        #         options=[],
+        #     )
+        # )
+        #logging.info(click.style("variable_entities: {}".format(variable_entities), fg="green"))
         return variable_entities, external_data_variables
 
     @classmethod
