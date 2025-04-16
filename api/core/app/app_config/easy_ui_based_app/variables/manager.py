@@ -1,9 +1,11 @@
 import logging
 import re
 
+import click
+
 from core.app.app_config.entities import ExternalDataVariableEntity, VariableEntity, VariableEntityType
 from core.external_data_tool.factory import ExternalDataToolFactory
-import click
+
 
 class BasicVariablesConfigManager:
     @classmethod
