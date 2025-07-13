@@ -1,5 +1,6 @@
 import { useCallback, useEffect } from 'react'
 import type {
+  FormOption,
   ModelProvider,
 } from '@/app/components/header/account-setting/model-provider-page/declarations'
 import { fetchModelProviderModelList } from '@/service/common'
@@ -10,7 +11,6 @@ import type {
   GitHubItemAndMarketPlaceDependency,
   InstallPackageResponse,
   InstalledLatestVersionResponse,
-  InstalledPluginListResponse,
   InstalledPluginListWithTotalResponse,
   PackageDependency,
   Permissions,
@@ -67,16 +67,7 @@ export const useCheckInstalled = ({
   })
 }
 
-export const useInstalledPluginList = (disable?: boolean) => {
-  return useQuery<InstalledPluginListResponse>({
-    queryKey: useInstalledPluginListKey,
-    queryFn: () => get<InstalledPluginListResponse>('/workspaces/current/plugin/list'),
-    enabled: !disable,
-    initialData: !disable ? undefined : { plugins: [] },
-  })
-}
-
-export const useInstalledPluginListWithPagination = (pageSize = 100) => {
+export const useInstalledPluginList = (disable?: boolean, pageSize = 100) => {
   const fetchPlugins = async ({ pageParam = 1 }) => {
     const response = await get<InstalledPluginListWithTotalResponse>(
       `/workspaces/current/plugin/list?page=${pageParam}&page_size=${pageSize}`,
@@ -91,8 +82,10 @@ export const useInstalledPluginListWithPagination = (pageSize = 100) => {
     hasNextPage,
     isFetchingNextPage,
     isLoading,
+    isSuccess,
   } = useInfiniteQuery({
-    queryKey: ['installed-plugins', pageSize],
+    enabled: !disable,
+    queryKey: useInstalledPluginListKey,
     queryFn: fetchPlugins,
     getNextPageParam: (lastPage, pages) => {
       const totalItems = lastPage.total
@@ -108,10 +101,12 @@ export const useInstalledPluginListWithPagination = (pageSize = 100) => {
   })
 
   const plugins = data?.pages.flatMap(page => page.plugins) ?? []
+  const total = data?.pages[0].total ?? 0
 
   return {
-    data: {
+    data: disable ? undefined : {
       plugins,
+      total,
     },
     isLastPage: !hasNextPage,
     loadNextPage: () => {
@@ -120,6 +115,7 @@ export const useInstalledPluginListWithPagination = (pageSize = 100) => {
     isLoading,
     isFetching: isFetchingNextPage,
     error,
+    isSuccess,
   }
 }
 
@@ -482,7 +478,7 @@ export const usePluginTaskList = (category?: PluginType) => {
           refreshPluginList(category ? { category } as any : undefined, !category)
       }
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isRefetching])
 
   const handleRefetch = useCallback(() => {
@@ -574,5 +570,19 @@ export const usePluginInfo = (providerName?: string) => {
       }
     },
     enabled: !!providerName,
+  })
+}
+
+export const useFetchDynamicOptions = (plugin_id: string, provider: string, action: string, parameter: string, provider_type: 'tool') => {
+  return useMutation({
+    mutationFn: () => get<{ options: FormOption[] }>('/workspaces/current/plugin/parameters/dynamic-options', {
+      params: {
+        plugin_id,
+        provider,
+        action,
+        parameter,
+        provider_type,
+      },
+    }),
   })
 }

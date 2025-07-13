@@ -93,6 +93,7 @@ const translation = {
     learnMore: 'Tìm hiểu thêm',
     completionShortDescription: 'Trợ lý AI cho các tác vụ tạo văn bản',
     completionUserDescription: 'Nhanh chóng xây dựng trợ lý AI cho các tác vụ tạo văn bản với cấu hình đơn giản.',
+    dropDSLToCreateApp: 'Kéo tệp DSL vào đây để tạo ứng dụng',
   },
   editApp: 'Chỉnh sửa thông tin',
   editAppTitle: 'Chỉnh sửa thông tin ứng dụng',
@@ -135,6 +136,14 @@ const translation = {
       notConfigured: 'Cấu hình nhà cung cấp để bật theo dõi',
       moreProvider: 'Thêm nhà cung cấp',
     },
+    arize: {
+      title: 'Arize',
+      description: 'Khả năng quan sát LLM cấp doanh nghiệp, đánh giá trực tuyến và ngoại tuyến, giám sát và thử nghiệm—được hỗ trợ bởi OpenTelemetry. Được thiết kế đặc biệt cho các ứng dụng dựa trên LLM và tác nhân.',
+    },
+    phoenix: {
+      title: 'Phoenix',
+      description: 'Nền tảng mã nguồn mở và dựa trên OpenTelemetry cho khả năng quan sát, đánh giá, kỹ thuật prompt và thử nghiệm cho quy trình làm việc và tác nhân LLM của bạn.',
+    },
     langsmith: {
       title: 'LangSmith',
       description: 'Nền tảng phát triển tất cả trong một cho mọi bước của vòng đời ứng dụng được hỗ trợ bởi LLM.',
@@ -163,6 +172,7 @@ const translation = {
       title: 'Dệt',
       description: 'Weave là một nền tảng mã nguồn mở để đánh giá, thử nghiệm và giám sát các ứng dụng LLM.',
     },
+    aliyun: {},
   },
   answerIcon: {
     description: 'Có nên sử dụng biểu tượng web app để thay thế 🤖 trong ứng dụng được chia sẻ hay không',
@@ -209,6 +219,43 @@ const translation = {
     modelNotSupportedTip: 'Mô hình hiện tại không hỗ trợ tính năng này và tự động bị hạ cấp xuống việc tiêm lệnh.',
     moreFillTip: 'Hiển thị tối đa 10 cấp độ lồng ghép',
   },
+  accessItemsDescription: {
+    anyone: 'Mọi người đều có thể truy cập ứng dụng web.',
+    specific: 'Chỉ những nhóm hoặc thành viên cụ thể mới có thể truy cập ứng dụng web.',
+    organization: 'Bất kỳ ai trong tổ chức đều có thể truy cập ứng dụng web.',
+    external: 'Chỉ những người dùng bên ngoài đã xác thực mới có thể truy cập vào ứng dụng Web.',
+  },
+  accessControlDialog: {
+    accessItems: {
+      anyone: 'Ai có liên kết',
+      specific: 'Các nhóm hoặc thành viên cụ thể',
+      organization: 'Chỉ các thành viên trong doanh nghiệp',
+      external: 'Người dùng bên ngoài được xác thực',
+    },
+    operateGroupAndMember: {
+      searchPlaceholder: 'Tìm kiếm nhóm và thành viên',
+      allMembers: 'Tất cả các thành viên',
+      expand: 'Mở rộng',
+      noResult: 'Không có kết quả',
+    },
+    title: 'Kiểm soát truy cập ứng dụng web',
+    description: 'Cài đặt quyền truy cập ứng dụng web',
+    accessLabel: 'Ai có quyền truy cập',
+    groups_one: '{{count}} NHÓM',
+    groups_other: '{{count}} NHÓM',
+    members_one: '{{count}} THÀNH VIÊN',
+    members_other: '{{count}} THÀNH VIÊN',
+    noGroupsOrMembers: 'Không có nhóm hoặc thành viên nào được chọn',
+    webAppSSONotEnabledTip: 'Vui lòng liên hệ với quản trị viên doanh nghiệp để cấu hình phương thức xác thực ứng dụng web.',
+    updateSuccess: 'Cập nhật thành công',
+  },
+  publishApp: {
+    title: 'Ai có thể truy cập ứng dụng web',
+    notSet: 'Chưa đặt',
+    notSetDesc: 'Hiện tại không ai có thể truy cập ứng dụng web. Vui lòng thiết lập quyền truy cập.',
+  },
+  noAccessPermission: 'Không được phép truy cập ứng dụng web',
+  accessControl: 'Kiểm soát truy cập ứng dụng web',
 }
 
 export default translation

@@ -17,3 +17,4 @@ class SystemVariableKey(StrEnum):
     ORG_CLASS = "org_class"
     SCOPES = "scopes"
     CLIENT_ID = "client_id"
+    WORKFLOW_EXECUTION_ID = "workflow_run_id"

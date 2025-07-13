@@ -97,6 +97,7 @@ const translation = {
     chatbotShortDescription: 'Chatbot, ki temelji na LLM, s preprosto nastavitvijo',
     chooseAppType: 'Izberite vrsto aplikacije',
     learnMore: 'Izvedi več',
+    dropDSLToCreateApp: 'Spustite DSL datoteko sem, da ustvarite aplikacijo',
   },
   editApp: 'Uredi informacije',
   editAppTitle: 'Uredi informacije o aplikaciji',
@@ -145,6 +146,14 @@ const translation = {
       notConfigured: 'Konfigurirajte ponudnika za omogočanje sledenja',
       moreProvider: 'Več ponudnikov',
     },
+    arize: {
+      title: 'Arize',
+      description: 'Podjetniško opazovanje LLM, spletno in nespletno vrednotenje, nadzorovanje in eksperimentiranje — s podporo OpenTelemetry. Namenjeno aplikacijam, ki temeljijo na LLM in agentih.',
+    },
+    phoenix: {
+      title: 'Phoenix',
+      description: 'Odprtokodna in na OpenTelemetry osnovana platforma za opazovanje, vrednotenje, inženiring pozivov ter eksperimentiranje za vaše LLM poteke dela in agente.',
+    },
     langsmith: {
       title: 'LangSmith',
       description: 'Vse-v-enem razvijalska platforma za vsak korak življenjskega cikla aplikacije, ki jo poganja LLM.',
@@ -172,6 +181,7 @@ const translation = {
       title: 'Tkanje',
       description: 'Weave je odprtokodna platforma za vrednotenje, testiranje in spremljanje aplikacij LLM.',
     },
+    aliyun: {},
   },
   mermaid: {
     handDrawn: 'Ročno narisano',
@@ -209,6 +219,43 @@ const translation = {
     modelNotSupportedTip: 'Trenutni model ne podpira te funkcije in se samodejno zniža na vbrizgavanje pozivov.',
     structuredTip: 'Strukturirani izhodi so funkcija, ki zagotavlja, da bo model vedno generiral odgovore, ki se držijo vašega posredovanega JSON sheme.',
   },
+  accessItemsDescription: {
+    anyone: 'Vsakdo lahko dostopa do spletne aplikacije',
+    specific: 'Samo določenim skupinam ali članom je omogočen dostop do spletne aplikacije',
+    organization: 'Vsakdo v organizaciji lahko dostopa do spletne aplikacije',
+    external: 'Samo avtentificirani zunanji uporabniki lahko dostopajo do spletne aplikacije.',
+  },
+  accessControlDialog: {
+    accessItems: {
+      anyone: 'Kdorkoli s povezavo',
+      specific: 'Specifične skupine ali člani',
+      organization: 'Samo člani znotraj podjetja',
+      external: 'Avtorizirani zunanji uporabniki',
+    },
+    operateGroupAndMember: {
+      searchPlaceholder: 'Išči skupine in člane',
+      allMembers: 'Vsi člani',
+      expand: 'Razširi',
+      noResult: 'Brez rezultata',
+    },
+    title: 'Nadzor dostopa do spletne aplikacije',
+    description: 'Nastavite dovoljenja za dostop do spletne aplikacije',
+    accessLabel: 'Kdo ima dostop',
+    groups_one: '{{count}} SKUPINA',
+    groups_other: '{{count}} SKUPIN',
+    members_one: '{{count}} ČLAN',
+    members_other: '{{count}} ČLANOV',
+    updateSuccess: 'Posodobitev uspešna',
+    noGroupsOrMembers: 'Nobene skupine ali članov ni izbranih',
+    webAppSSONotEnabledTip: 'Prosimo, da se obrnete na skrbnika podjetja, da konfigurira način avtentikacije spletne aplikacije.',
+  },
+  publishApp: {
+    title: 'Kdo lahko dostopa do spletne aplikacije',
+    notSet: 'Ni nastavljeno',
+    notSetDesc: 'Trenutno nihče ne more dostopati do spletne aplikacije. Prosimo, nastavite dovoljenja.',
+  },
+  accessControl: 'Nadzor dostopa do spletne aplikacije',
+  noAccessPermission: 'Brez dovoljenja za dostop do spletne aplikacije',
 }
 
 export default translation

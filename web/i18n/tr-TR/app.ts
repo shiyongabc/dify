@@ -93,6 +93,7 @@ const translation = {
     advancedShortDescription: 'Çok turlu sohbetler için geliştirilmiş iş akışı',
     noIdeaTip: 'Fikriniz yok mu? Şablonlarımıza göz atın',
     forAdvanced: 'İLERI DÜZEY KULLANICILAR IÇIN',
+    dropDSLToCreateApp: 'Uygulama oluşturmak için DSL dosyasını buraya bırakın',
   },
   editApp: 'Bilgileri Düzenle',
   editAppTitle: 'Uygulama Bilgilerini Düzenle',
@@ -135,6 +136,14 @@ const translation = {
       notConfigured: 'İzlemeyi etkinleştirmek için sağlayıcıyı yapılandırın',
       moreProvider: 'Daha Fazla Sağlayıcı',
     },
+    arize: {
+      title: 'Arize',
+      description: 'Kurumsal düzeyde LLM gözlemlenebilirliği, çevrimiçi ve çevrimdışı değerlendirme, izleme ve deneyler — OpenTelemetry ile desteklenmektedir. LLM ve ajan tabanlı uygulamalar için özel olarak tasarlanmıştır.',
+    },
+    phoenix: {
+      title: 'Phoenix',
+      description: 'LLM iş akışlarınız ve ajanlarınız için açık kaynaklı ve OpenTelemetry tabanlı gözlemlenebilirlik, değerlendirme, istem mühendisliği ve deney platformu.',
+    },
     langsmith: {
       title: 'LangSmith',
       description: 'LLM destekli uygulama yaşam döngüsünün her adımı için her şeyi kapsayan bir geliştirici platformu.',
@@ -163,6 +172,7 @@ const translation = {
       title: 'Dokuma',
       description: 'Weave, LLM uygulamalarını değerlendirmek, test etmek ve izlemek için açık kaynaklı bir platformdur.',
     },
+    aliyun: {},
   },
   answerIcon: {
     descriptionInExplore: 'Keşfet\'te değiştirilecek 🤖 web app simgesinin kullanılıp kullanılmayacağı',
@@ -205,6 +215,43 @@ const translation = {
     modelNotSupportedTip: 'Mevcut model bu özelliği desteklemiyor ve otomatik olarak prompt enjeksiyonuna düşürülüyor.',
     structuredTip: 'Yapılandırılmış Çıktılar, modelin sağladığınız JSON Şemasına uyacak şekilde her zaman yanıtlar üretmesini sağlayan bir özelliktir.',
   },
+  accessItemsDescription: {
+    anyone: 'Herkes web uygulamasına erişebilir',
+    organization: 'Kuruluşta herkes web uygulamasına erişebilir.',
+    specific: 'Sadece belirli gruplar veya üyeler web uygulamasına erişebilir.',
+    external: 'Sadece kimliği doğrulanmış dış kullanıcılar Web uygulamasına erişebilir',
+  },
+  accessControlDialog: {
+    accessItems: {
+      anyone: 'Bağlantıya sahip olan herkes',
+      organization: 'Sadece işletme içindeki üyeler',
+      specific: 'Belirli gruplar veya üyeler',
+      external: 'Kimliği onaylanmış harici kullanıcılar',
+    },
+    operateGroupAndMember: {
+      searchPlaceholder: 'Grupları ve üyeleri ara',
+      expand: 'Genişlet',
+      allMembers: 'Tüm üyeler',
+      noResult: 'Sonuç yok',
+    },
+    title: 'Web Uygulaması Erişim Kontrolü',
+    description: 'Web uygulaması erişim izinlerini ayarlayın',
+    accessLabel: 'Kimin erişimi var',
+    groups_other: '{{count}} GRUP',
+    members_one: '{{count}} ÜYE',
+    members_other: '{{count}} ÜYE',
+    noGroupsOrMembers: 'Seçilen grup veya üye yok',
+    webAppSSONotEnabledTip: 'Lütfen web uygulaması kimlik doğrulama yöntemini yapılandırmak için kurumsal yöneticinizle iletişime geçin.',
+    updateSuccess: 'Başarıyla güncellendi',
+    groups_one: '{{count}} GRUP',
+  },
+  publishApp: {
+    title: 'Web uygulamasına kim erişebilir',
+    notSet: 'Ayar yapılmamış',
+    notSetDesc: 'Şu anda kimse web uygulamasına erişemiyor. Lütfen izinleri ayarlayın.',
+  },
+  accessControl: 'Web Uygulaması Erişim Kontrolü',
+  noAccessPermission: 'Web uygulamasına erişim izni yok',
 }
 
 export default translation

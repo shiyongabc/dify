@@ -9,11 +9,11 @@ from pydantic import BaseModel, Field
 
 from core.file import File, FileAttribute, file_manager
 from core.variables import Segment, SegmentGroup, Variable
+from core.variables.consts import MIN_SELECTORS_LENGTH
 from core.variables.segments import FileSegment, NoneSegment
+from core.workflow.constants import CONVERSATION_VARIABLE_NODE_ID, ENVIRONMENT_VARIABLE_NODE_ID, SYSTEM_VARIABLE_NODE_ID
+from core.workflow.enums import SystemVariableKey
 from factories import variable_factory
-
-from ..constants import CONVERSATION_VARIABLE_NODE_ID, ENVIRONMENT_VARIABLE_NODE_ID, SYSTEM_VARIABLE_NODE_ID
-from ..enums import SystemVariableKey
 
 VariableValue = Union[str, int, float, dict, list, File]
 
@@ -32,9 +32,11 @@ class VariablePool(BaseModel):
     # TODO: This user inputs is not used for pool.
     user_inputs: Mapping[str, Any] = Field(
         description="User inputs",
+        default_factory=dict,
     )
     system_variables: Mapping[SystemVariableKey, Any] = Field(
         description="System variables",
+        default_factory=dict,
     )
     environment_variables: Sequence[Variable] = Field(
         description="Environment variables.",
@@ -68,8 +70,10 @@ class VariablePool(BaseModel):
         )
         logging.info(click.style("user_variables: {}".format(self.user_inputs), fg="green"))
         logging.info(click.style("system_variables: {}".format(self.system_variables.items()), fg="green"))
+
+    def model_post_init(self, context: Any, /) -> None:
         for key, value in self.system_variables.items():
-            
+
             self.add((SYSTEM_VARIABLE_NODE_ID, key.value), value)
         # Add environment variables to the variable pool
         for var in self.environment_variables:
@@ -95,12 +99,12 @@ class VariablePool(BaseModel):
         Returns:
             None
         """
-        if len(selector) < 2:
+        if len(selector) < MIN_SELECTORS_LENGTH:
             raise ValueError("Invalid selector")
 
         if isinstance(value, Variable):
             variable = value
-        if isinstance(value, Segment):
+        elif isinstance(value, Segment):
             variable = variable_factory.segment_to_variable(segment=value, selector=selector)
         else:
             segment = variable_factory.build_segment(value)
@@ -122,7 +126,7 @@ class VariablePool(BaseModel):
         Raises:
             ValueError: If the selector is invalid.
         """
-        if len(selector) < 2:
+        if len(selector) < MIN_SELECTORS_LENGTH:
             return None
 
         hash_key = hash(tuple(selector[1:]))
