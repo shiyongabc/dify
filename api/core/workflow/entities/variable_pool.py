@@ -15,6 +15,7 @@ from core.variables.variables import VariableUnion
 from core.workflow.constants import CONVERSATION_VARIABLE_NODE_ID, ENVIRONMENT_VARIABLE_NODE_ID, SYSTEM_VARIABLE_NODE_ID
 from core.workflow.system_variable import SystemVariable
 from factories import variable_factory
+from workflow.enums import SystemVariableKey
 
 VariableValue = Union[str, int, float, dict, list, File]
 
